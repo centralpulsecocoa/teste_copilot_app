@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard operacional de agendamentos">
+  <title>Dashboard de Agendamentos</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="loading" class="loading-overlay">
+    <div class="spinner"></div>
+    <p>Carregando dados...</p>
+  </div>
+
+  <header class="app-header">
+    <div class="brand-group">
+      <img src="assets/logo-data-squad.svg" alt="Logo Data Squad" class="logo logo-squad">
+      <div>
+        <p class="eyebrow">OPERAÇÕES</p>
+        <h1>Dashboard de Agendamentos</h1>
+        <p class="subtitle">Acompanhamento de veículos, sacos e situação operacional</p>
+      </div>
+    </div>
+    <img src="assets/logo-ofi.svg" alt="Logo OFI" class="logo logo-ofi">
+  </header>
+
+  <main class="container">
+    <section class="status-bar" aria-live="polite">
+      <span id="dataStatus">Aguardando carregamento do arquivo</span>
+      <span id="lastUpdate">Última atualização: --</span>
+    </section>
+
+    <section class="cards-grid" aria-label="Indicadores principais">
+      <article class="metric-card">
+        <span class="metric-label">Total de veículos</span>
+        <strong id="totalVehicles" class="metric-value">0</strong>
+        <span class="metric-help">Registros ou placas distintas</span>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Total de sacos</span>
+        <strong id="totalBags" class="metric-value">0</strong>
+        <span class="metric-help">Soma conforme filtros</span>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Concluídos</span>
+        <strong id="totalCompleted" class="metric-value">0</strong>
+        <span class="metric-help">Entregue, concluído ou finalizado</span>
+      </article>
+      <article class="metric-card accent-card">
+        <span class="metric-label">Percentual concluído</span>
+        <strong id="completionRate" class="metric-value">0%</strong>
+        <div class="progress"><div id="completionProgress" class="progress-fill"></div></div>
+      </article>
+    </section>
+
+    <section class="panel filters-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">FILTROS</p>
+          <h2>Refine a visualização</h2>
+        </div>
+        <button id="clearFilters" class="button button-secondary" type="button">Limpar filtros</button>
+      </div>
+      <div class="filters-grid">
+        <label>Fornecedor
+          <select id="supplierFilter"><option value="">Todos</option></select>
+        </label>
+        <label>Situação
+          <select id="statusFilter"><option value="">Todas</option></select>
+        </label>
+        <label>Depósito
+          <select id="warehouseFilter"><option value="">Todos</option></select>
+        </label>
+        <label>Pesquisa rápida
+          <input id="searchInput" type="search" placeholder="Pesquisar em todas as colunas...">
+        </label>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel chart-panel">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">DISTRIBUIÇÃO</p>
+            <h2>Situação dos agendamentos</h2>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="statusChart" aria-label="Gráfico em rosca por situação"></canvas>
+          <p id="chartEmpty" class="empty-message hidden">Sem dados para exibir.</p>
+        </div>
+      </article>
+
+      <article class="panel table-panel">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">DETALHAMENTO</p>
+            <h2>Dados filtrados</h2>
+          </div>
+          <button id="exportButton" class="button button-primary" type="button">Exportar Excel</button>
+        </div>
+        <div class="table-toolbar">
+          <span id="recordCount">0 registros</span>
+          <label>Linhas por página
+            <select id="pageSize">
+              <option value="10">10</option>
+              <option value="25" selected>25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </label>
+        </div>
+        <div class="table-scroll">
+          <table id="dataTable">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <button id="prevPage" class="button button-secondary" type="button">Anterior</button>
+          <span id="pageInfo">Página 1 de 1</span>
+          <button id="nextPage" class="button button-secondary" type="button">Próxima</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="errorPanel" class="error-panel hidden" role="alert">
+      <strong>Não foi possível carregar os dados.</strong>
+      <p id="errorMessage"></p>
+      <p>Confirme se <code>data/teste_agendameto.xlsx</code> foi incluído no repositório e se o site está sendo aberto por um servidor HTTP ou pelo GitHub Pages.</p>
+    </section>
+  </main>
+
+  <footer>Dashboard operacional • Dados carregados diretamente do Excel hospedado no GitHub</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
