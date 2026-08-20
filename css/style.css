@@ -1,1 +1,99 @@
-body{font-family:Arial,sans-serif}h1{color:#870064}
+:root {
+  --primary: #870064;
+  --primary-light: #b3308f;
+  --accent: #f5a623;
+  --bg: #f5f2f4;
+}
+
+body {
+  background: var(--bg);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #333;
+}
+
+/* Cabeçalho */
+.app-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.header-title { text-align: center; line-height: 1.1; }
+.header-title h1 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+.header-title span { font-size: .85rem; opacity: .85; }
+.logo {
+  height: 56px;
+  width: auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+/* Cards */
+.metric-card {
+  border: none;
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.metric-label {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: #888;
+}
+.metric-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Títulos internos */
+.card-subtitle { color: var(--primary); font-weight: 600; }
+
+/* Botão limpar */
+.btn-outline-secondary { border-color: var(--primary); color: var(--primary); }
+.btn-outline-secondary:hover { background: var(--primary); color: #fff; }
+
+/* DataTables header */
+table.dataTable thead th { color: var(--primary); }
+
+/* Botão exportar */
+.btn-exportar {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+}
+.btn-exportar:hover { background: #6b0050; color: #fff; }
+
+/* Mapa */
+#mapa {
+  height: 420px;
+  width: 100%;
+  border-radius: 8px;
+}
+.map-legend {
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+  font-size: 12px;
+  line-height: 18px;
+  color: #333;
+}
+.map-legend span {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
