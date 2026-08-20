@@ -1,1 +1,0 @@
-window.APP_CONFIG={dataPath:"data/qry_rastreabilidade.xlsx",accessPath:"data/acesso.xlsx",sheetName:"app_traceability",accessSheet:null,columns:{cpf:"cpf_nf",name:"nome_nf",supplier:"Fornecedor",state:"Estado",branch:"Filial",status:"status_acomp_campo",volume:"Soma de quantidade_nf",cp:"CP",balance:"SALDO"},colors:["#870064","#f5a623","#5b4563","#3d956c","#d65a8f","#6f88b6"]};
